@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		
+		<script type="text/javascript" src="http://spaceify.net/games/g/gamelib.min.js"></script>
+		<script type="text/javascript" src="smartDevice.js"></script>
+		
+		<script type="text/javascript">	
+		    var controller = null; 
+			
+		    window.onload = function(){
+			    controller = new TestController();
+			    controller.connect();
+			}	
+		</script>
+		
+		<title>
+			TestController for Spaceify Connectivity Library
+		</title>
+	</head>
+<body>
+	<h2>
+		Controller 
+	</h2>
+	<h3>
+		Please open the browser console to see what is happening!
+	</h3>
+	<h3>Connectiontype to the screen:</h3><h3 id="conntype">Cloud</h3>
+	<button onclick="controller.sendButtonPress();">Call RPC on Server</button>
+	<h3>RPC reply from controller: </h3><h3 id="reply"></h3>
+</body>
+</html>

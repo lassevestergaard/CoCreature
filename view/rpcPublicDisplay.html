@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		
+		<script type="text/javascript" src="http://spaceify.net/games/g/gamelib.min.js"></script>
+		
+		<script type="text/javascript" src="../model/creature.js"></script>
+		<script type="text/javascript" src="../model/player.js"></script>
+		<script type="text/javascript" src="../model/tool.js"></script>
+		<script type="text/javascript" src="../model/toolbox.js"></script>
+		<script type="text/javascript" src="../model/world.js"></script>
+		<script type="text/javascript" src="../controller/controller.js"></script>
+		
+		<script type="text/javascript" src="publicDisplay.js"></script>
+		<script type="text/javascript">	
+		    var screen = new TestScreen();
+			
+		    window.onload = function(){
+			    screen.connect();
+		    }
+		</script>
+		<title>
+			TestScreen for communicationhub
+		</title>
+	</head>
+<body>
+	<h2>
+		Screen for demonstrating an RPC call
+	</h2>
+	<h3>
+		Please open the browser console to see what is happening!
+	</h3>
+	<h3>
+		RPC Call from the controller: <span id="message"></message>
+	</h3>
+	
+</body>
+</html>
