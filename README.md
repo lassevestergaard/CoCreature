@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # commlibexamples
 Examples of using the Spaceify Communication Platform API
 
@@ -75,3 +76,7 @@ setter void setScreenDisconnectionListener( any thisParam, ScreenDisconnectedCal
 
 setter void setScreenConnectionTypeListener( any thisParam, ScreenConnectionTypeCallback listenerFunction );	
 };
+=======
+# CoCreature
+Prototype on collaborative public displays at the UBISS summer school
+>>>>>>> ac49089b6f96f2f272c9875ae3e7ae5d4bdd76ce
