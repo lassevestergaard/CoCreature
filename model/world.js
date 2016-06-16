@@ -23,7 +23,7 @@ function World(name, trees, fertility, creature, drawDiv) {
         cell1.append(pText);
         
         var progress=$("<div>",{class:"progress"});
-        var progressBar=$("<div>",{style:"width:40%;", class:"progress-bar progress-bar-danger", role:"progressbar", "aria-valuenow":this.creature.generalState(), "aria-valuemin":0, "aria-valuemax":4});
+        var progressBar=$("<div>",{style:"width:"+this.creature.happinessLevel+"%;", class:"progress-bar progress-bar-danger", role:"progressbar", "aria-valuenow":this.creature.happinessLevel, "aria-valuemin":0, "aria-valuemax":100});
         progress.append(progressBar);
         cell1.append(progress);
         
@@ -32,7 +32,7 @@ function World(name, trees, fertility, creature, drawDiv) {
         cell2.append(pText1);
         
         var progress1=$("<div>",{class:"progress"});
-        var progressBar1=$("<div>",{style:"width:40%;", class:"progress-bar progress-bar-danger", role:"progressbar", "aria-valuenow":this.creature.generalState(), "aria-valuemin":0, "aria-valuemax":4});
+        var progressBar1=$("<div>",{style:"width:"+this.creature.starvationLevel+"%;", class:"progress-bar progress-bar-danger", role:"progressbar", "aria-valuenow":this.creature.starvationLevel, "aria-valuemin":0, "aria-valuemax":100});
         progress1.append(progressBar1);
         cell2.append(progress1);
         

@@ -34,6 +34,17 @@ function TestScreen(){
 		console.log("ball sent");
 	};
 	
+	//When receiving food
+	self.onReceiveFood = function(title, callerId, connectionId, callback){
+	    myCreature.feed(title);
+	    myWorld.draw();
+	}
+	
+	//When receiving the ball during a game
+	self.onReceiveBall = function(playLevel, callerId, connectionId, callback){
+	    myCreature.play(playLevel);
+	    myWorld.draw();
+	}
 	
 	self.onBallPressed = function(x, y, callerId, connectionId, callback){
 		console.log("ball pressed");
@@ -79,6 +90,8 @@ function TestScreen(){
         //gameClient.exposeRpcMethod( "onButtonPressed", self, self.onButtonPressed);
 		
 		gameClient.exposeRpcMethod("onBallPressed", self, self.onBallPressed);
+		gameClient.exposeRpcMethod("onReceiveFood", self, self.onReceiveFood);
+		gameClient.exposeRpcMethod("onReceiveBall", self, self.onReceiveBall);
         
         gameClient.setControllerConnectionListener(self, self.onControllerConnected);
         gameClient.setControllerDisconnectionListener(self, self.onControllerDisconnected);

@@ -36,7 +36,7 @@ function Ballgame(ballRadius, speed){
 	
 	this.movedownBall = function() {
 		
-		console.log("centerY: " + centerY);
+		//console.log("centerY: " + centerY);
 		
 		if (centerY < canvas.height + 100) {
 			context.clearRect(0, 0, canvas.width, canvas.height);
@@ -61,7 +61,7 @@ function Ballgame(ballRadius, speed){
 	
 	this.appearBallFromBottom = function() {
 		
-		console.log("centerY: " + centerY);
+		//console.log("centerY: " + centerY);
 		
 		if (centerY >= (canvas.height/2)) {
 			context.clearRect(0, 0, canvas.width, canvas.height);
