@@ -18,6 +18,8 @@
 		<script type="text/javascript" src="/ubiss/CoCreature/model/world.js"></script>
 		<script type="text/javascript" src="/ubiss/CoCreature/controller/controller.js"></script>
 		
+		<script type="text/javascript" src="ballgame.js"></script>
+		
 		<script type="text/javascript" src="publicDisplay.js"></script>
 		
 		
@@ -37,8 +39,10 @@
             myCreature.images.push("../images/fox_5.jpeg");
             
             var myWorld = new World("The new world", 10, 1, myCreature, "world");
-		    
-		    //var screen = new TestScreen();
+
+			ballGame = new Ballgame(70, 10);
+			
+		    var screen = new TestScreen();
 			
 		    window.onload = function(){
 			    //screen.connect();
@@ -46,16 +50,23 @@
 			    connectionBar("connection");
 			    
 			    myWorld.draw();
+				
+				ballGame.setupDisplayBall();
+				ballGame.addBall(75);
+				
 		    }
 		</script>
 		<title>
-			TestScreen for communicationhub
+			CoCreature Public Display
 		</title>
 	</head>
 <body>
     <div id="wrapper" class="row">
         <div id="connection" class="col-md-2 fullHeight"></div>
 	    <div id="world" class="col-md-10"></div>
+		<div id="ballsarea">
+			<canvas id="myCanvas"></canvas>
+		</div>
 	</div>
 </body>
 </html>

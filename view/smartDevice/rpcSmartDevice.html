@@ -8,22 +8,45 @@
 		
 		<script type="text/javascript" src="http://spaceify.net/games/g/gamelib.min.js"></script>
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+		
+		<script type="text/javascript" src="ballgame.js"></script>
+		
 		<script type="text/javascript" src="smartDevice.js"></script>
 		
 		<script type="text/javascript">	
-		    var controller = null; 
+		    
+			ballGame = new Ballgame(70, 10);
+			
+			
+			var controller = null; 
 			
 		    window.onload = function(){
-			    //controller = new TestController();
-			    //controller.connect();
-			}	
+			    controller = new TestController();
+			    controller.connect();
+				
+				
+				ballGame.setupControllerBall();
+				//ballGame.addBall(75);
+				
+				// Add event listener for click events.
+				canvas = document.getElementById('myCanvas');
+				canvas.addEventListener('click', function(event) {
+					controller.sendBallPressed();
+				}, false);
+			}
+			
 		</script>
 		
-		<title>CoCreature user</title>
-		
+		<title>
+			Controller for coCreature
+		</title>
 	</head>
 <body>
-
+	
+	<div id="ballsarea">
+		<canvas id="myCanvas"></canvas>
+	</div>
+	
     <div id="content" class="row">
         <div id="foodView" class="col-md-12"></div>
         <div id="gameView" class="col-md-12 hidden"></div>
@@ -33,6 +56,6 @@
         <div id="feed" class="col-md-6 text-uppercase text-center btn btn-default btn-lg">Feed the fox</div>
         <div id="game" class="col-md-6 text-uppercase text-center btn btn-default btn-lg">Play with the fox</div>
     </div>
-    
+	
 </body>
 </html>
