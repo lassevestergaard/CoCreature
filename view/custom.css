@@ -1,0 +1,12 @@
+.fullHeight { 
+    min-height: 100%;
+    height: 100%;
+}
+
+html,body,#wrapper{
+    height:100%;
+}
+
+.hidden {
+     display:none;
+}

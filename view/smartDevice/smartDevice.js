@@ -23,13 +23,13 @@ function TestController(){
     self.sendButtonPress = function(){
         console.log("RpcController::sendButtonPress()");
         gameClient.callClientRpc(screenId, "onButtonPressed",[100,200], self, function(err, data){
-            document.getElementById("reply").innerHTML= data;
+            //document.getElementById("reply").innerHTML= data;
             });
         };
         
     self.onScreenConnectionTypeUpdated = function(newConnectionType, screenId){
         console.log("RpcController::onScreenConnectionTypeUpdated() new connection type: " + newConnectionType);
-        document.getElementById("conntype").innerHTML = newConnectionType;
+        //document.getElementById("conntype").innerHTML = newConnectionType;
         };
     
     self.onScreenConnected = function(id){
