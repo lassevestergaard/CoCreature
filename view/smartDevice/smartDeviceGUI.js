@@ -1,7 +1,15 @@
-$("#feed").click(function(){
+function clickHandlers(){
+    $("#feed").click(function(){
+        $("#foodView").removeClass("hidden");
+        $("#gameView").addClass("hidden");
+    });
 
-});
+    $("#game").click(function(){
+        $("#gameView").removeClass("hidden");
+        $("#foodView").addClass("hidden");
+    });
+}
 
-$("#game").click(function(){
-
-});
+function updateMainView(){
+    
+}

@@ -9,13 +9,14 @@
 		<script type="text/javascript" src="http://spaceify.net/games/g/gamelib.min.js"></script>
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="smartDevice.js"></script>
+		<script type="text/javascript" src="smartDeviceGUI.js"></script>
+		
 		
 		<script type="text/javascript">	
 		    var controller = null; 
 			
 		    window.onload = function(){
-			    //controller = new TestController();
-			    //controller.connect();
+			    clickHandlers();
 			}	
 		</script>
 		
@@ -23,7 +24,6 @@
 		
 	</head>
 <body>
-
     <div id="content" class="row">
         <div id="foodView" class="col-md-12"></div>
         <div id="gameView" class="col-md-12 hidden"></div>
