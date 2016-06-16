@@ -16,6 +16,8 @@
 		<script type="text/javascript" src="../model/world.js"></script>
 		<script type="text/javascript" src="../controller/controller.js"></script>
 		
+		<script type="text/javascript" src="ballgame.js"></script>
+		
 		<script type="text/javascript" src="publicDisplay.js"></script>
 		<script type="text/javascript">	
 		    
@@ -34,21 +36,30 @@
             
             var myWorld = new World("The new world", 10, 1, myCreature, "world");
 		    
+			ballGame = new Ballgame(70, 10);
+			
 		    var screen = new TestScreen();
 			
 		    window.onload = function(){
 			    screen.connect();
 			    myWorld.draw();
+				
+				ballGame.setup();
+				ballGame.addBall(75);
+				
 		    }
 		</script>
 		<title>
-			TestScreen for communicationhub
+			CoCreature Public Display
 		</title>
 	</head>
 <body>
     <div id="wrapper">
         <div id="connection"></div>
 	    <div id="world"></div>
+		<div id="ballsarea">
+			<canvas id="myCanvas"></canvas>
+		</div>
 	</div>
 </body>
 </html>

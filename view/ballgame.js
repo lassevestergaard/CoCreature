@@ -1,0 +1,78 @@
+function Ballgame(ballRadius, speed){
+	
+	this.radius = ballRadius;
+	this.speed = speed;
+	
+	this.setup = function() {
+		canvas = document.getElementById('myCanvas');
+		context = canvas.getContext('2d');
+		centerX = canvas.width / 2;
+		centerY = canvas.height / 2;
+		radius = this.radius;
+	}
+	
+	this.addBall = function(centerY) {
+		
+		console.log("in addBall: " + centerY);
+		
+		context.beginPath();
+		context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+		context.fillStyle = 'pink';
+		context.fill();
+		context.lineWidth = 4;
+		context.strokeStyle = '#003300';
+		context.stroke();
+	};
+	
+	//addBall(centerY);
+	
+	this.movedownBall = function() {
+		
+		console.log("centerY: " + centerY);
+		
+		if (centerY < canvas.height + 100) {
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			
+			context.beginPath();
+			context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+			context.fillStyle = 'pink';
+			context.fill();
+			context.lineWidth = 4;
+			context.strokeStyle = '#003300';
+			context.stroke();
+
+			centerY += 10;
+			//context.fillStyle = "rgba(34,45,23,0.4)";
+			//context.fillRect(0, 0, canvas.width, canvas.height);
+			requestAnimationFrame(this.movedownBall.bind(this));
+			//context.clearRect(0, 0, canvas.width, canvas.height);
+		} else {
+			context.clearRect(0, 0, canvas.width, canvas.height);
+		}
+		
+	};
+	
+	this.appearBall = function() {
+		
+		console.log("centerY: " + centerY);
+		
+		if (centerY >= (canvas.height/2)) {
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			
+			context.beginPath();
+			context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+			context.fillStyle = 'pink';
+			context.fill();
+			context.lineWidth = 4;
+			context.strokeStyle = '#003300';
+			context.stroke();
+
+			centerY -= 10;
+			//context.fillStyle = "rgba(34,45,23,0.4)";
+			//context.fillRect(0, 0, canvas.width, canvas.height);
+			requestAnimationFrame(this.appearBall.bind(this));
+			//context.clearRect(0, 0, canvas.width, canvas.height);
+		}
+	};
+	
+}
