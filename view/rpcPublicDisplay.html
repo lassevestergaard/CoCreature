@@ -3,7 +3,10 @@
 	<head>
 		<meta charset="UTF-8">
 		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		
 		<script type="text/javascript" src="http://spaceify.net/games/g/gamelib.min.js"></script>
+		<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 		
 		<script type="text/javascript" src="../model/creature.js"></script>
 		<script type="text/javascript" src="../model/player.js"></script>
@@ -14,10 +17,27 @@
 		
 		<script type="text/javascript" src="publicDisplay.js"></script>
 		<script type="text/javascript">	
+		    
+		    var myToolbox = new Toolbox("Tools of the world");
+            myToolbox.addTool(new Tool("pedding"));
+            myToolbox.addTool(new Tool("water"));
+            myToolbox.addTool(new Tool("bread"));
+            myToolbox.addTool(new Tool("axe"));
+
+            var myCreature = new Creature("Hans", 0);
+            myCreature.images.push("images/fox_1.png");
+            myCreature.images.push("images/fox_2.jpg");
+            myCreature.images.push("images/fox_3.png");
+            myCreature.images.push("images/fox_4.jpg");
+            myCreature.images.push("images/fox_5.jpeg");
+            
+            var myWorld = new World("The new world", 10, 1, myCreature, "world");
+		    
 		    var screen = new TestScreen();
 			
 		    window.onload = function(){
 			    screen.connect();
+			    myWorld.draw();
 		    }
 		</script>
 		<title>
@@ -25,15 +45,7 @@
 		</title>
 	</head>
 <body>
-	<h2>
-		Screen for demonstrating an RPC call
-	</h2>
-	<h3>
-		Please open the browser console to see what is happening!
-	</h3>
-	<h3>
-		RPC Call from the controller: <span id="message"></message>
-	</h3>
+	<div id="world"></div>
 	
 </body>
 </html>

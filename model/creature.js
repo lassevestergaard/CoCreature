@@ -1,6 +1,7 @@
 function Creature(name, gender) {
     this.name = name;
     this.gender = gender;
+    this.images=[];
     
     //between 0 and 1
     this.healthLevel = 1;
@@ -16,6 +17,9 @@ function Creature(name, gender) {
     
     //between 0 and 1
     this.starvationLevel=0.5;
+    
+    this.stateGranularity=5;
+    this.maxState=2;
     
     this.feed = function(creature, tool){
         creature.starvationLevel += tool.efficiencyLevel;
@@ -38,5 +42,14 @@ function Creature(name, gender) {
         this.empathyLevel += playLevel*0.5;
         this.healthLevel += playLevel*0.25;
         this.knowledgeLevel += playLevel*0.1;
+    }
+    
+    this.generalState = function(){
+        var temp=Math.floor(this.happinessLevel+this.starvationLevel/(this.maxState/this.stateGranularity));
+        return temp > 4 ? 4 : temp;
+    }
+    
+    this.draw = function(){
+        return $("<img>", {src: this.images[this.generalState()], class: "center-block creature"});
     }
 }

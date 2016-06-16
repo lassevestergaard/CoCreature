@@ -14,4 +14,14 @@ function Toolbox(name) {
             }
         }
     }
+    
+    this.draw = function(){
+        var toolboxDiv=$("<div>", {class: "toolbox"});
+        
+        for(i=0;i<this.tools.length;i++){
+            toolboxDiv.append(this.tools[i].draw());
+        }
+    
+        return toolboxDiv;
+    }
 }
