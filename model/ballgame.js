@@ -129,4 +129,23 @@ function Ballgame(ballRadius, speed){
 			//setTimeout(function(){alert("game over");}, 4000);
 		}
 	};
+	
+	/*
+	this.sound = function() {
+
+	    sound = document.createElement("audio");
+	    sound.src = "../audio/Bow_Fire_Arrow.mp3";
+	    sound.setAttribute("preload", "auto");
+	    sound.setAttribute("controls", "none");
+	    sound.style.display = "none";
+		
+	    document.body.appendChild(sound);
+		
+	    play = function(){
+	        sound.play();
+	    }
+	    stop = function(){
+	        sound.pause();
+	    }
+	}*/
 }

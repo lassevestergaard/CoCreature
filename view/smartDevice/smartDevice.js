@@ -58,6 +58,11 @@ function TestController(){
 		
 		ballGame.addBall(pos);
 		ballGame.appearBallFromTop();
+		
+		if ("vibrate" in navigator) {
+			navigator.vibrate(500);
+			//ballGame.sound.play(); //doesnt work.
+		}
 	};
 
         
