@@ -12,7 +12,13 @@ function TestController(){
     var gameClient = null;
     
     self.connect = function(){
-        gameClient = new GameClient(); 
+        gameClient = new GameClient();
+		
+		
+		//expose function to receive ball
+		gameClient.exposeRpcMethod("onReceiveBall", self, self.onBallReceived);
+		
+		
         gameClient.setScreenConnectionTypeListener(self, self.onScreenConnectionTypeUpdated);
         
         gameClient.setScreenConnectionListener(self, self.onScreenConnected);
@@ -26,6 +32,34 @@ function TestController(){
             document.getElementById("reply").innerHTML= data;
             });
         };
+		
+	self.sendBallPressed = function(){
+		console.log("ball pressed");
+			
+		//canvas = document.getElementById('myCanvas');
+		//canvas.style.visibility = 'hidden';
+		
+		gameClient.callClientRpc(screenId, "onBallPressed", [100,200], self, function(err, data){
+			document.getElementById("reply").innerHTML = data;
+		});		
+			
+		ballGame.moveupBall();
+			
+	};
+		
+	self.onBallReceived = function(){
+		console.log("ball received");
+		canvas = document.getElementById('myCanvas');
+		//canvas.style.visibility = 'visible';
+		
+		var pos = 0 - 70;
+		
+		console.log("pos:" + pos);
+		
+		ballGame.addBall(pos);
+		ballGame.appearBallFromTop();
+	};
+
         
     self.onScreenConnectionTypeUpdated = function(newConnectionType, screenId){
         console.log("RpcController::onScreenConnectionTypeUpdated() new connection type: " + newConnectionType);

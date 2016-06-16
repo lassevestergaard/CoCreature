@@ -45,8 +45,8 @@ function TestScreen(){
 		
 		console.log("pos:" + pos);
 		
-		addBall(pos);
-		appearBall();
+		ballGame.addBall(pos);
+		ballGame.appearBallFromBottom();
 		
 		callback(null, "Hello from screen: ball received ");
 		
