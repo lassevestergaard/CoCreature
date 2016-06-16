@@ -10,3 +10,7 @@ html,body,#wrapper{
 .hidden {
      display:none;
 }
+
+.tool{
+    width:300px;
+}

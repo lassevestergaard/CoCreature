@@ -1,6 +1,6 @@
-function Tool(name) {
+function Tool(name, img) {
     this.name = name;
-    this.image = null;
+    this.image = img;
     
     //between 0 and 1
     this.efficiencyLevel = 1;

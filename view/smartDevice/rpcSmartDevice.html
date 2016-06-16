@@ -8,31 +8,62 @@
 		
 		<script type="text/javascript" src="http://spaceify.net/games/g/gamelib.min.js"></script>
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+		
+		<script type="text/javascript" src="../../model/ballgame.js"></script>
+		<script type="text/javascript" src="../../model/tool.js"></script>
+		<script type="text/javascript" src="../../model/toolbox.js"></script>
+		
 		<script type="text/javascript" src="smartDevice.js"></script>
 		<script type="text/javascript" src="smartDeviceGUI.js"></script>
 		
 		
 		<script type="text/javascript">	
-		    var controller = null; 
+		    
+			ballGame = new Ballgame(70, 10);
+			
+			var controller = null;
+			
+			var toolbox=new Toolbox("myToolbox"); 
+		    toolbox.addTool(new Tool("Broccoli", "../images/broccoli.png"));
+		    toolbox.addTool(new Tool("Apple", "../images/apple.png"));
+		    toolbox.addTool(new Tool("Cake", "../images/cake.png"));
+		    toolbox.addTool(new Tool("Fish", "../images/fish.png"));
 			
 		    window.onload = function(){
+		        $("#foodView").append(toolbox.draw());
+		    
 			    clickHandlers();
-			}	
+			    
+			    controller = new TestController();
+			    controller.connect();
+				
+				
+				ballGame.setupControllerBall();
+				//ballGame.addBall(75);
+				
+				// Add event listener for click events.
+				canvas = document.getElementById('myCanvas');
+				canvas.addEventListener('click', function(event) {
+					controller.sendBallPressed();
+				}, false);
+			}
 		</script>
 		
-		<title>CoCreature user</title>
-		
+		<title>
+			Controller for coCreature
+		</title>
 	</head>
-<body>
+<body>	
     <div id="content" class="row">
         <div id="foodView" class="col-md-12"></div>
-        <div id="gameView" class="col-md-12 hidden"></div>
+        <div id="gameView" class="col-md-12 hidden">
+            <canvas id="myCanvas" class=""></canvas>
+        </div>
     </div>
     
     <div id="buttons" class="row">
         <div id="feed" class="col-md-6 text-uppercase text-center btn btn-default btn-lg">Feed the fox</div>
         <div id="game" class="col-md-6 text-uppercase text-center btn btn-default btn-lg">Play with the fox</div>
     </div>
-    
 </body>
 </html>

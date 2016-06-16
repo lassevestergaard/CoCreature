@@ -13,3 +13,8 @@ function clickHandlers(){
 function updateMainView(){
     
 }
+
+function populateFoodView(){
+    //$("")
+
+}

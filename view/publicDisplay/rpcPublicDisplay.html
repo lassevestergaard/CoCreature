@@ -13,20 +13,13 @@
 		
 		<script type="text/javascript" src="../../model/creature.js"></script>
 		<script type="text/javascript" src="../../model/player.js"></script>
-		<script type="text/javascript" src="../../model/tool.js"></script>
-		<script type="text/javascript" src="../../model/toolbox.js"></script>
 		<script type="text/javascript" src="../../model/world.js"></script>
+		
+		<script type="text/javascript" src="../../model/ballgame.js"></script>
 		
 		<script type="text/javascript" src="publicDisplay.js"></script>
 		
 		<script type="text/javascript">	
-		    
-		    var myToolbox = new Toolbox("Tools of the world");
-            myToolbox.addTool(new Tool("pedding"));
-            myToolbox.addTool(new Tool("water"));
-            myToolbox.addTool(new Tool("bread"));
-            myToolbox.addTool(new Tool("axe"));
-
             var myCreature = new Creature("Hans", 0);
             myCreature.images.push("../images/fox_1.png");
             myCreature.images.push("../images/fox_2.jpg");
@@ -35,25 +28,34 @@
             myCreature.images.push("../images/fox_5.jpeg");
             
             var myWorld = new World("The new world", 10, 1, myCreature, "world");
-		    
-		    //var screen = new TestScreen();
+
+			ballGame = new Ballgame(70, 10);
+			
+		    var screen = new TestScreen();
 			
 		    window.onload = function(){
-			    //screen.connect();
+			    screen.connect();
 			    
 			    connectionBar("connection");
 			    
 			    myWorld.draw();
+				
+				ballGame.setupDisplayBall();
+				ballGame.addBall(75);
+				
 		    }
 		</script>
 		<title>
-			TestScreen for communicationhub
+			CoCreature Public Display
 		</title>
 	</head>
 <body>
     <div id="wrapper" class="row">
         <div id="connection" class="col-md-2 fullHeight"></div>
 	    <div id="world" class="col-md-10"></div>
+		<div id="ballsarea">
+			<canvas id="myCanvas"></canvas>
+		</div>
 	</div>
 </body>
 </html>
