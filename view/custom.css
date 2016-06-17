@@ -3,7 +3,7 @@
     height: 100%;
 }
 
-html,body,#wrapper{
+html,body,#wrapper, .container-fluid{
     height:100%;
 }
 
@@ -16,5 +16,27 @@ html,body,#wrapper{
 }
 
 .creature{
-    width:300px;
+    width:40%;
+}
+
+.mobilecanvas{
+	/*background-color: blue;*/
+	width: 100%;
+	min-height: 100%;
+}
+
+.contentitems{
+	height: 70%;
+}
+
+.contentitem{
+	height: 100%;
+}
+
+.buttons{
+	height: 30%;
+}
+
+.singlebutton{
+	height: 100%;
 }

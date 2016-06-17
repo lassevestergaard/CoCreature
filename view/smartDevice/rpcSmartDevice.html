@@ -56,17 +56,20 @@
 			Controller for coCreature
 		</title>
 	</head>
-<body>	
-    <div id="content" class="row">
-        <div id="foodView" class="col-md-12"></div>
-        <div id="gameView" class="col-md-12 hidden">
-            <canvas id="myCanvas" class=""></canvas>
-        </div>
-    </div>
+<body>
+	<div class="container-fluid">
+    	<div id="content" class="row contentitems">
+        	<div id="foodView" class="col-xs-12 contentitems"></div>
+        	<div id="gameView" class="col-xs-12 hidden contentitems">
+            	<canvas id="myCanvas" class="mobilecanvas"></canvas>
+        	</div>
+    	</div>
     
-    <div id="buttons" class="row">
-        <div id="feed" class="col-md-6 text-uppercase text-center btn btn-default btn-lg">Feed the fox</div>
-        <div id="game" class="col-md-6 text-uppercase text-center btn btn-default btn-lg">Play with the fox</div>
-    </div>
+    	<div id="buttons" class="row buttons">
+        	<div id="feed" class="col-xs-6 text-center text-uppercase btn btn-default btn-lg singlebutton">Feed the fox</div>
+        	<div id="game" class="col-xs-6 text-center text-uppercase btn btn-default btn-lg singlebutton">Play with the fox</div>
+    	</div>
+	
+	</div>
 </body>
 </html>
