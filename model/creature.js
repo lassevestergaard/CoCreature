@@ -58,7 +58,7 @@ function Creature(name, gender) {
         if(type.toLowerCase()=="generalstate")
             this.imgSrc=this.stateImages[Math.floor((this.happinessLevel+this.starvationLevel)/50)];
         else if(type.toLowerCase()=="play")
-            this.imgSrc=this.playImages[Math.floor(Math.random()*this.playImages.length)];
+            this.imgSrc=this.playImages[value];
         else if(type.toLowerCase()=="playanimation")
             this.imgSrc=this.gameAnimations[value];
         else if(type.toLowerCase()=="feed"){
