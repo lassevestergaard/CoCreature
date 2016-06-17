@@ -1,5 +1,6 @@
 var playerList=[];
 var firstConnection = false;
+var gameMode = false;
 
 var GROUP_NAME = "coCreature2";
 var SERVER_ADDRESS = {host: "spaceify.net", port: 1979};
@@ -69,13 +70,26 @@ function TestScreen(){
 		setTimeout(screen.sendBallOut, 1500);
 		
 	};
+	
+	self.onGameButtonPressed = function(x, y, callerId, connectionId, callback){
+		console.log("game button press received");
+		
+		if(playerList.length > 0 && gameMode != true){
+			gameMode = true;
+			
+			ballGame.setupDisplayBall();
+			ballGame.addBall(75);
+			
+			setTimeout(screen.sendBallOut, 3000);
+		}
+	}
     
     self.onControllerConnected = function(id){
         playerList.push(id);
 		
 		if (firstConnection == false){
 			firstConnection = true;
-			setTimeout(screen.sendBallOut, 3000);
+			//setTimeout(screen.sendBallOut, 3000);
 		}
 		
 		//console.log("added. amount of controllers: " + controllerList.length);
@@ -88,6 +102,10 @@ function TestScreen(){
                 break;
             }
         }
+		
+		if(playerList.length < 1)
+			gameMode = false;
+		
     };
 	
     self.connect = function(){
@@ -96,7 +114,8 @@ function TestScreen(){
 		gameClient.exposeRpcMethod("onBallPressed", self, self.onBallPressed);
 		gameClient.exposeRpcMethod("onReceiveFood", self, self.onReceiveFood);
 		gameClient.exposeRpcMethod("onReceiveBall", self, self.onReceiveBall);
-        
+        gameClient.exposeRpcMethod("onGameButtonPressed", self, self.onGameButtonPressed);
+		
         gameClient.setControllerConnectionListener(self, self.onControllerConnected);
         gameClient.setControllerDisconnectionListener(self, self.onControllerDisconnected);
         

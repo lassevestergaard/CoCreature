@@ -1,5 +1,6 @@
+var gotBalls = false;
+
 //Group name for development use
-        
 var GROUP_NAME = "coCreature2";
         
 var SERVER_ADDRESS = {host: "spaceify.net", port: 1979};
@@ -26,16 +27,16 @@ function TestController(){
         gameClient.connect(SERVER_ADDRESS.host, SERVER_ADDRESS.port, "controller", GROUP_NAME, function(){});
         };
     
-    self.sendButtonPress = function(){
-        console.log("RpcController::sendButtonPress()");
-        gameClient.callClientRpc(screenId, "onButtonPressed",[100,200], self, function(err, data){
+    self.sendGameButtonPress = function(){
+        console.log("RpcController::sendGameButtonPress()");
+        gameClient.callClientRpc(screenId, "onGameButtonPressed",[100,200], self, function(err, data){
             //document.getElementById("reply").innerHTML= data;
             });
         };
 		
 	self.sendBallPressed = function(){
 		console.log("ball pressed");
-			
+		
 		//canvas = document.getElementById('myCanvas');
 		//canvas.style.visibility = 'hidden';
 		
@@ -46,6 +47,8 @@ function TestController(){
 		gameClient.callClientRpc(screenId, "onReceiveBall", [1], self);	
 			
 		ballGame.moveupBall();
+		
+		gotBalls = false;
 			
 	};
 	
@@ -55,19 +58,24 @@ function TestController(){
 		
 	self.onBallReceived = function(){
 		console.log("ball received");
-		canvas = document.getElementById('myCanvas');
-		//canvas.style.visibility = 'visible';
 		
-		var pos = 0 - 70;
+		if (gotBalls == false) {
+			gotBalls = true;
+			
+			canvas = document.getElementById('myCanvas');
+			//canvas.style.visibility = 'visible';
 		
-		console.log("pos:" + pos);
+			var pos = 0 - 70;
 		
-		ballGame.addBall(pos);
-		ballGame.appearBallFromTop();
+			console.log("pos:" + pos);
 		
-		if ("vibrate" in navigator) {
-			navigator.vibrate(500);
-			//ballGame.sound.play(); //doesnt work.
+			ballGame.addBall(pos);
+			ballGame.appearBallFromTop();
+		
+			if ("vibrate" in navigator) {
+				navigator.vibrate(500);
+				//ballGame.sound.play(); //doesnt work.
+			}	
 		}
 	};
 

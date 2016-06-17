@@ -47,7 +47,12 @@
 				// Add event listener for click events.
 				canvas = document.getElementById('myCanvas');
 				canvas.addEventListener('click', function(event) {
-					controller.sendBallPressed();
+					if (gotBalls == true) {
+						controller.sendBallPressed();
+					} else {
+						console.log("you don't have balls");
+					}
+					
 				}, false);
 			}
 		</script>

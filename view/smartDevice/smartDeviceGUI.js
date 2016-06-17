@@ -7,6 +7,8 @@ function clickHandlers(){
     $("#game").click(function(){
         $("#gameView").removeClass("hidden");
         $("#foodView").addClass("hidden");
+		
+		controller.sendGameButtonPress();
     });
 }
 
@@ -15,6 +17,5 @@ function updateMainView(){
 }
 
 function populateFoodView(){
-    //$("")
 
 }
