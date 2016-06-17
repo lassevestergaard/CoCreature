@@ -1,7 +1,7 @@
 var gotBalls = false;
 
 //Group name for development use
-var GROUP_NAME = "coCreatureL";
+var GROUP_NAME = "coCreature";
         
 var SERVER_ADDRESS = {host: "spaceify.net", port: 1979};
 var WEBRTC_CONFIG = {"iceServers":[{url:"stun:kandela.tv"},{url :"turn:kandela.tv", username:"webrtcuser", credential:"jeejeejee"}]};
@@ -40,9 +40,9 @@ function TestController(){
 		//canvas = document.getElementById('myCanvas');
 		//canvas.style.visibility = 'hidden';
 		
-		gameClient.callClientRpc(screenId, "onBallPressed", [100,200], self, function(err, data){
-			document.getElementById("reply").innerHTML = data;
-		});
+		/*gameClient.callClientRpc(screenId, "onBallPressed", [100,200], self, function(err, data){
+			//document.getElementById("reply").innerHTML = data;
+		});*/
 		
 		gameClient.callClientRpc(screenId, "onReceiveBall", [1], self);	
 			

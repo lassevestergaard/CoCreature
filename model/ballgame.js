@@ -3,6 +3,9 @@ function Ballgame(ballRadius, speed){
 	this.radius = ballRadius;
 	this.speed = speed;
 	
+	this.hiScore = 0;
+	this.tempScore = 0;
+	
 	this.setupDisplayBall = function() {
 		canvas = document.getElementById('myCanvas');
 		context = canvas.getContext('2d');

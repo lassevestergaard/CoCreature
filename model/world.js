@@ -12,8 +12,8 @@ function World(name, trees, fertility, creature, drawDiv) {
         worldWindow.empty();
         
         var row=$("<div>",{class:"progressWrapper"});
-        var cell1=$("<div>",{class:"col-lg-6"});
-        var cell2=$("<div>",{class:"col-lg-6"});
+        var cell1=$("<div>",{class:"col-md-6"});
+        var cell2=$("<div>",{class:"col-md-6"});
         row.append(cell1);
         row.append(cell2);
         worldWindow.append(row);
