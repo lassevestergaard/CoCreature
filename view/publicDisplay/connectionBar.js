@@ -10,7 +10,7 @@ function connectionBar(parentDiv){
     
     var panel2=$("<div>",{class:"panel panel-default"});
     var conn2=$("<div>",{class:"panel-body"});
-    var qrCode=$("<img>", {src:"../images/qr.png", style:"width:210px"});
+    var qrCode=$("<img>", {src:"../images/qr.jpg", class:"connectionbar"});
     conn2.append(qrCode);
     panel2.append(conn2);
     

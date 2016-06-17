@@ -12,7 +12,7 @@ html,body,#wrapper, .container-fluid{
 }
 
 .tool{
-    width:300px;
+    width:30%;
 }
 
 .creature{
@@ -39,4 +39,8 @@ html,body,#wrapper, .container-fluid{
 
 .singlebutton{
 	height: 100%;
+}
+
+.connectionbar{
+    width:100%;
 }

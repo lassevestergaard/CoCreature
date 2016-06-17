@@ -1,9 +1,11 @@
 var playerList=[];
 var firstConnection = false;
 
-var GROUP_NAME = "coCreature2";
+var GROUP_NAME = "coCreatureLasse";
 var SERVER_ADDRESS = {host: "spaceify.net", port: 1979};
 var WEBRTC_CONFIG = {"iceServers":[{url:"stun:kandela.tv"},{url :"turn:kandela.tv", username:"webrtcuser", credential:"jeejeejee"}]};
+
+var ballReactionTime=0;
 
 function TestScreen(){
     var self = this;
@@ -19,6 +21,8 @@ function TestScreen(){
     };
 	
 	self.sendBallOut = function(x, y, callerId, connectionId, callback){
+	    var date=new Date();
+	    ballReactionTime=date.getTime();
 		
 		var id = playerList[Math.floor(Math.random()*playerList.length)];
 		
@@ -40,14 +44,27 @@ function TestScreen(){
 	    myCreature.drawState("feed");
 	    myWorld.draw();
 	    myCreature.drawState("generalstate");
-	    
 	    setTimeout(function(){myWorld.draw();},2000);
 	}
 	
 	//When receiving the ball during a game
 	self.onReceiveBall = function(playLevel, callerId, connectionId, callback){
+	    var tDate=new Date();
+	    var delay=tDate.getTime()-ballReactionTime;
+
 	    myCreature.play(playLevel);
+	    
+	    if(delay>=3000 && delay<=4000)
+	        myCreature.drawState("play",0);
+	    else if (delay>=2000 && delay<3000)
+	        myCreature.drawState("play",1);
+	    else if (delay<2000)
+	        myCreature.drawState("play",2);
+	    
 	    myWorld.draw();
+	    
+	    myCreature.drawState("generalstate");
+	    setTimeout(function(){myWorld.draw();},2000);
 	}
 	
 	self.onBallPressed = function(x, y, callerId, connectionId, callback){
