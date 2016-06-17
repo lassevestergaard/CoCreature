@@ -1,7 +1,7 @@
 var playerList=[];
 var firstConnection = false;
 
-var GROUP_NAME = "coCreature";
+var GROUP_NAME = "coCreature2";
 var SERVER_ADDRESS = {host: "spaceify.net", port: 1979};
 var WEBRTC_CONFIG = {"iceServers":[{url:"stun:kandela.tv"},{url :"turn:kandela.tv", username:"webrtcuser", credential:"jeejeejee"}]};
 

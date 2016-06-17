@@ -19,15 +19,15 @@ function Creature(name, gender) {
         if(name.toLowerCase()=="broccoli"){
             happi=-5;
             starv=10;
-            this.currentFoodGif=0;
+            this.currentFoodGif=this.starvationLevel == 100 ? 2 : 0;
         }else if(name.toLowerCase()=="cake"){
             happi=5;
             starv=5;
-            this.currentFoodGif=1;
+            this.currentFoodGif=this.starvationLevel == 100 ? 2 : 1;
         }else if(name.toLowerCase()=="fish"){
             happi=5;
             starv=20;
-            this.currentFoodGif=2;
+            this.currentFoodGif=this.starvationLevel == 100 ? 2 : 1;
         }
         
         this.starvationLevel += starv;
@@ -49,8 +49,6 @@ function Creature(name, gender) {
     }
     
     this.draw = function(){
-        console.log("HEJ" + this.imgSrc);
-    
         if(this.imgSrc=="")
             this.drawState("generalstate");
         return $("<img>", {src: this.imgSrc, class: "center-block creature"});
