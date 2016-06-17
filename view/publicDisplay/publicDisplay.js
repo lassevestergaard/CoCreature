@@ -37,7 +37,12 @@ function TestScreen(){
 	//When receiving food
 	self.onReceiveFood = function(title, callerId, connectionId, callback){
 	    myCreature.feed(title);
+	    myCreature.drawState("feed");
 	    myWorld.draw();
+	    
+	    myCreature.drawState("generalstate");
+	    
+	    setTimeout(myWorld.draw(),1000);
 	}
 	
 	//When receiving the ball during a game
