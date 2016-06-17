@@ -45,6 +45,12 @@ html,body,#wrapper, .container-fluid{
     width:100%;
 }
 
-.speechBubble{
-
+.speechBubble {
+    position: absolute;
+    border: 1px solid black;
+    padding: 50px;
+    font-size: 20px;
+    font-weight: bolder;
+    left: 70%;
+    top: 35%;
 }

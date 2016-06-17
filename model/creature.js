@@ -11,7 +11,7 @@ function Creature(name, gender) {
     //between 0 and 100
     this.happinessLevel = 10;
     this.starvationLevel=20;
-    this.message="Hi I am a fox...";
+    this.message="Hi! I am the fox of UBISS. I am sad and hungry. Play with me and feed me!";
 
     this.feed = function(name){
         var happi=0;
@@ -21,15 +21,17 @@ function Creature(name, gender) {
             happi=-5;
             starv=5;
             this.currentFoodGif=this.starvationLevel == 100 ? 2 : 0;
-            this.message="I hate broccoli....";
+            this.message="I hate broccoli! Give me something real to eat..";
         }else if(name.toLowerCase()=="cake"){
             happi=5;
             starv=15;
             this.currentFoodGif=this.starvationLevel == 100 ? 2 : 1;
+            this.message="Noms!";
         }else if(name.toLowerCase()=="fish"){
             happi=5;
             starv=15;
             this.currentFoodGif=this.starvationLevel == 100 ? 2 : 1;
+            this.message="Noms!";
         }
         
         this.starvationLevel += starv;
@@ -57,14 +59,43 @@ function Creature(name, gender) {
     }
     
     this.drawState = function(type, value=null){
-        if(type.toLowerCase()=="generalstate")
+        if(type.toLowerCase()=="generalstate"){
             this.imgSrc=this.stateImages[Math.floor((this.happinessLevel+this.starvationLevel)/50)];
-        else if(type.toLowerCase()=="play")
+        }else if(type.toLowerCase()=="play"){
             this.imgSrc=this.playImages[value];
-        else if(type.toLowerCase()=="playanimation")
+            if(value==0)
+                this.message="This is boring! Try to be faster";
+            else if(value==1)
+                this.message="This is so boring! Try to be faster!";
+            else if(value==2)
+                this.message="Whee! This is fun!!";
+            else if(value==3)
+                this.message="Whee! This game is fun!!";
+        }else if(type.toLowerCase()=="playanimation"){
             this.imgSrc=this.gameAnimations[value];
-        else if(type.toLowerCase()=="feed"){
+            if(value==0)
+                this.message="Let's play!!";
+            else if(value==1)
+                this.message="Getting hungry!";
+            else if(value==2)
+                this.message="You should practice more!";
+            else if(value==3)
+                this.message="This was fun!";
+            else if(value==4)
+                this.message="This was fun!";
+        }else if(type.toLowerCase()=="feed"){
             this.imgSrc=this.feedings[this.currentFoodGif];
+             if(value==0)
+                this.message="Let's play!!";
+            else if(value==1)
+                this.message="Getting hungry!";
+            else if(value==2)
+                this.message="You should practice more!";
         }
     }
 }
+
+
+
+
+
