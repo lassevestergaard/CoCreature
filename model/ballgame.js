@@ -25,7 +25,7 @@ function Ballgame(ballRadius, speed){
 		
 		context.beginPath();
 		context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-		context.fillStyle = 'pink';
+		context.fillStyle = '#aec8c9';
 		context.fill();
 		context.lineWidth = 4;
 		context.strokeStyle = '#003300';
@@ -43,7 +43,7 @@ function Ballgame(ballRadius, speed){
 			
 			context.beginPath();
 			context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-			context.fillStyle = 'pink';
+			context.fillStyle = '#aec8c9';
 			context.fill();
 			context.lineWidth = 4;
 			context.strokeStyle = '#003300';
@@ -68,7 +68,7 @@ function Ballgame(ballRadius, speed){
 			
 			context.beginPath();
 			context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-			context.fillStyle = 'pink';
+			context.fillStyle = '#aec8c9';
 			context.fill();
 			context.lineWidth = 4;
 			context.strokeStyle = '#003300';
@@ -89,7 +89,7 @@ function Ballgame(ballRadius, speed){
 			
 			context.beginPath();
 			context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-			context.fillStyle = 'pink';
+			context.fillStyle = '#aec8c9';
 			context.fill();
 			context.lineWidth = 4;
 			context.strokeStyle = '#003300';
@@ -116,7 +116,7 @@ function Ballgame(ballRadius, speed){
 			
 			context.beginPath();
 			context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-			context.fillStyle = 'pink';
+			context.fillStyle = '#aec8c9';
 			context.fill();
 			context.lineWidth = 4;
 			context.strokeStyle = '#003300';

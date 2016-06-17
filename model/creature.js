@@ -9,8 +9,8 @@ function Creature(name, gender) {
     this.imgSrc="";
     
     //between 0 and 100
-    this.happinessLevel = 50;
-    this.starvationLevel=50;
+    this.happinessLevel = 10;
+    this.starvationLevel=20;
 
     this.feed = function(name){
         var happi=0;
@@ -18,15 +18,15 @@ function Creature(name, gender) {
     
         if(name.toLowerCase()=="broccoli"){
             happi=-5;
-            starv=10;
+            starv=5;
             this.currentFoodGif=this.starvationLevel == 100 ? 2 : 0;
         }else if(name.toLowerCase()=="cake"){
             happi=5;
-            starv=5;
+            starv=15;
             this.currentFoodGif=this.starvationLevel == 100 ? 2 : 1;
         }else if(name.toLowerCase()=="fish"){
             happi=5;
-            starv=20;
+            starv=15;
             this.currentFoodGif=this.starvationLevel == 100 ? 2 : 1;
         }
         
@@ -44,8 +44,8 @@ function Creature(name, gender) {
     }
     
     this.play = function(playLevel){
-        this.happinessLevel += (this.happinessLevel + playLevel) > 100 ? 0 : playLevel;
-        this.starvationLevel -= (this.starvationLevel - playLevel/3) < 0 ? 0 : playLevel/3;
+        this.happinessLevel += (this.happinessLevel + playLevel/2) > 100 ? 0 : playLevel/2;
+        this.starvationLevel -= (this.starvationLevel - playLevel/12) < 0 ? 0 : playLevel/12;
     }
     
     this.draw = function(){
