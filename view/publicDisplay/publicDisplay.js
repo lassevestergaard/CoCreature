@@ -39,10 +39,9 @@ function TestScreen(){
 	    myCreature.feed(title);
 	    myCreature.drawState("feed");
 	    myWorld.draw();
-	    
 	    myCreature.drawState("generalstate");
 	    
-	    setTimeout(myWorld.draw(),1000);
+	    setTimeout(function(){myWorld.draw();},2000);
 	}
 	
 	//When receiving the ball during a game

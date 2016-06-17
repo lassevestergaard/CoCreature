@@ -49,19 +49,22 @@ function Creature(name, gender) {
     }
     
     this.draw = function(){
+        console.log("HEJ" + this.imgSrc);
+    
         if(this.imgSrc=="")
             this.drawState("generalstate");
         return $("<img>", {src: this.imgSrc, class: "center-block creature"});
     }
     
-    this.drawState(type, value=null){
+    this.drawState = function(type, value=null){
         if(type.toLowerCase()=="generalstate")
             this.imgSrc=this.stateImages[Math.floor((this.happinessLevel+this.starvationLevel)/50)];
         else if(type.toLowerCase()=="play")
             this.imgSrc=this.playImages[Math.floor(Math.random()*this.playImages.length)];
         else if(type.toLowerCase()=="playanimation")
             this.imgSrc=this.gameAnimations[value];
-        else if(type.toLowerCase()=="feed")
+        else if(type.toLowerCase()=="feed"){
             this.imgSrc=this.feedings[this.currentFoodGif];
+        }
     }
 }
