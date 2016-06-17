@@ -15,6 +15,14 @@ function Toolbox(name) {
         }
     }
     
+    this.findTool = function(name){
+        for(i=0;i<this.tools.length;i++){
+            if(tools[i]==name){
+                return tools[i];
+            }
+        }
+    }
+    
     this.draw = function(){
         var toolboxDiv=$("<div>", {class: "toolbox"});
         

@@ -3,53 +3,55 @@ function Creature(name, gender) {
     this.gender = gender;
     this.images=[];
     
-    //between 0 and 1
-    this.healthLevel = 1;
+    //between 0 and 100
+    this.happinessLevel = 50;
+    this.starvationLevel=50;
+
+    this.feed = function(name){
+        var happi=0;
+        var starv=0;
     
-    //between 0 and 1
-    this.knowledgeLevel = 0;
-    
-    //between 0 and 1
-    this.empathyLevel = 0.5;
-    
-    //between 0 and 1
-    this.happinessLevel = 0.5;
-    
-    //between 0 and 1
-    this.starvationLevel=0.5;
-    
-    this.stateGranularity=5;
-    this.maxState=2;
-    
-    this.feed = function(creature, tool){
-        creature.starvationLevel += tool.efficiencyLevel;
-    }
-    
-    this.pet = function(petLevel){
-        this.happinessLevel += petLevel;
-        this.empathyLevel += petLevel*0.5;
-        this.healthLevel += petLevel*0.25;
-    }
-    
-    this.slap = function(slapLevel){
-        this.happinessLevel -= this.happinessLevel - slapLevel <0 ? 0 : slapLevel;
-        this.empathyLevel -= this.empathyLevel - slapLevel*0.5 <0 ? 0 : slapLevel*0.5;
-        this.healthLevel -= this.healthLevel - slapLevel*0.25 < 0 ? 0 : slapLevel*0.25;
+        if(name.toLowerCase()=="broccoli"){
+            happi=-5;
+            starv=10
+        }else if(name.toLowerCase()=="cake"){
+            happi=5;
+            starv=5
+        }else if(name.toLowerCase()=="fish"){
+            happi=5;
+            starv=20
+        }
+        
+        this.starvationLevel += starv;
+        if(this.starvationLevel > 100)
+            this.starvationLevel=100;
+        else if (this.starvationLevel < 0)
+            this.starvationLevel=0;
+        
+        this.happinessLevel += happi;
+        if(this.happinessLevel > 100)
+            this.happinessLevel=100;
+        else if (this.happinessLevel < 0)
+            this.happinessLevel=0;
+        
     }
     
     this.play = function(playLevel){
-        this.happinessLevel += playLevel;
-        this.empathyLevel += playLevel*0.5;
-        this.healthLevel += playLevel*0.25;
-        this.knowledgeLevel += playLevel*0.1;
-    }
-    
-    this.generalState = function(){
-        var temp=Math.floor(this.happinessLevel+this.starvationLevel/(this.maxState/this.stateGranularity));
-        return temp > 4 ? 4 : temp;
+        this.happinessLevel += (this.happinessLevel + playLevel) > 100 ? 0 : playLevel;
+        this.starvationLevel -= (this.starvationLevel - playLevel/3) < 0 ? 0 : playLevel/3;
     }
     
     this.draw = function(){
-        return $("<img>", {src: this.images[this.generalState()], class: "center-block creature"});
+        console.log("!!!!!!!!!!!!!!");
+        console.log(this.happinessLevel);
+        console.log("!!!!!!!!!!!!!!");
+        console.log(this.starvationLevel);
+        console.log("!!!!!!!!!!!!!!");
+        console.log(Math.floor((this.happinessLevel+this.starvationLevel)/50));
+        console.log("!!!!!!!!!!!!!!");
+        console.log(this.images[Math.floor((this.happinessLevel+this.starvationLevel)/50)]);
+        console.log("!!!!!!!!!!!!!!");
+    
+        return $("<img>", {src: this.images[Math.floor((this.happinessLevel+this.starvationLevel)/50)], class: "center-block creature"});
     }
 }

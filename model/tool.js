@@ -6,6 +6,12 @@ function Tool(name, img) {
     this.efficiencyLevel = 1;
     
     this.draw = function(){
-        return $("<img>", {src:this.image ,id:this.name, class: "tool"});
+        var tempImg = $("<img>", {src:this.image ,id:this.name, class: "tool"});
+        tempImg.click(function(){
+            controller.sendFood(tempImg.attr("id"));
+            tempImg.addClass("hidden");
+        });
+        
+        return tempImg;
     }
 }

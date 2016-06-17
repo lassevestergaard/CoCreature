@@ -23,20 +23,23 @@
 			
 			var controller = null;
 			
-			var toolbox=new Toolbox("myToolbox"); 
-		    toolbox.addTool(new Tool("Broccoli", "../images/broccoli.png"));
-		    toolbox.addTool(new Tool("Apple", "../images/apple.png"));
-		    toolbox.addTool(new Tool("Cake", "../images/cake.png"));
-		    toolbox.addTool(new Tool("Fish", "../images/fish.png"));
+			var toolbox=new Toolbox("myToolbox");
 			
 		    window.onload = function(){
-		        $("#foodView").append(toolbox.draw());
-		    
 			    clickHandlers();
 			    
 			    controller = new TestController();
 			    controller.connect();
 				
+				var tool1 = new Tool("Broccoli", "../images/broccoli.png");
+                var tool2 = new Tool("Cake", "../images/cake.png");
+                var tool3 = new Tool("Fish", "../images/fish.png");
+            
+                toolbox.addTool(tool1);
+                toolbox.addTool(tool2);
+                toolbox.addTool(tool3);
+                
+                $("#foodView").append(toolbox.draw());
 				
 				ballGame.setupControllerBall();
 				//ballGame.addBall(75);

@@ -41,11 +41,17 @@ function TestController(){
 		
 		gameClient.callClientRpc(screenId, "onBallPressed", [100,200], self, function(err, data){
 			document.getElementById("reply").innerHTML = data;
-		});		
+		});
+		
+		gameClient.callClientRpc(screenId, "onReceiveBall", [1], self);	
 			
 		ballGame.moveupBall();
 			
 	};
+	
+	self.sendFood = function(name){
+	    gameClient.callClientRpc(screenId, "onReceiveFood", [name], self);
+	}
 		
 	self.onBallReceived = function(){
 		console.log("ball received");
