@@ -2,7 +2,7 @@ var playerList=[];
 var firstConnection = false;
 var gameMode = false;
 
-var GROUP_NAME = "coCreatureLasse";
+var GROUP_NAME = "coCreatureMax";
 var SERVER_ADDRESS = {host: "spaceify.net", port: 1979};
 var WEBRTC_CONFIG = {"iceServers":[{url:"stun:kandela.tv"},{url :"turn:kandela.tv", username:"webrtcuser", credential:"jeejeejee"}]};
 
@@ -50,41 +50,52 @@ function TestScreen(){
 	
 	//When receiving the ball during a game
 	self.onReceiveBall = function(playLevel, callerId, connectionId, callback){
-	    var tDate=new Date();
-	    var delay=tDate.getTime()-ballReactionTime;
+		
+		if (gameMode) {
+		    var tDate=new Date();
+		    var delay=tDate.getTime()-ballReactionTime;
 
-	    myCreature.play(playLevel);
+		    myCreature.play(playLevel);
 	    
-	    if(delay>=3000 && delay<=4000)
-	        myCreature.drawState("play",0);
-	    else if (delay>=2000 && delay<3000)
-	        myCreature.drawState("play",1);
-	    else if (delay<2000)
-	        myCreature.drawState("play",2);
+		    if(delay>=3000 && delay<=4000)
+		        myCreature.drawState("play",0);
+		    else if (delay>=2000 && delay<3000)
+		        myCreature.drawState("play",1);
+		    else if (delay<2000)
+		        myCreature.drawState("play",2);
 	    
-	    myWorld.draw();
+		    myWorld.draw();
 	    
-	    myCreature.drawState("generalstate");
-	    setTimeout(function(){myWorld.draw();},2000);
+		    myCreature.drawState("generalstate");
+		    setTimeout(function(){myWorld.draw();},2000);
+		
+			ballGame.tempScore += 1;
+		
+			document.getElementById("tempScoreScreen").innerHTML = ballGame.tempScore;
+			//document.getElementById("hiScoreScreen").innerHTML = ballGame.hiScore;
+		}
+	    
 	}
 	
 	self.onBallPressed = function(x, y, callerId, connectionId, callback){
-		console.log("ball pressed");
-		//canvas = document.getElementById('myCanvas');
-		//canvas.style.visibility = 'visible';
 		
-		var canvas = document.getElementById('myCanvas');
-		var pos = canvas.height + 70;
+		if (gameMode) {
+			console.log("ball pressed");
+			//canvas = document.getElementById('myCanvas');
+			//canvas.style.visibility = 'visible';
 		
-		console.log("pos:" + pos);
+			var canvas = document.getElementById('myCanvas');
+			var pos = canvas.height + 70;
 		
-		ballGame.addBall(pos);
-		ballGame.appearBallFromBottom();
+			console.log("pos:" + pos);
 		
-		callback(null, "Hello from screen: ball received ");
+			ballGame.addBall(pos);
+			ballGame.appearBallFromBottom();
 		
+			callback(null, "Hello from screen: ball received ");
 		
-		setTimeout(screen.sendBallOut, 1500);
+			setTimeout(screen.sendBallOut, 1000);
+		}
 		
 	};
 	
@@ -98,6 +109,20 @@ function TestScreen(){
 			ballGame.addBall(75);
 			
 			setTimeout(screen.sendBallOut, 3000);
+			
+			setTimeout(function(){
+				//alert("gameover");
+				
+				if(ballGame.tempScore > ballGame.hiScore){
+					ballGame.hiScore = ballGame.tempScore;
+					document.getElementById("hiScoreScreen").innerHTML = ballGame.hiScore;
+				}
+			
+				ballGame.tempScore = 0;
+				
+				gameMode = false;
+				
+			}, 10000);
 		}
 	}
     
@@ -120,8 +145,16 @@ function TestScreen(){
             }
         }
 		
-		if(playerList.length < 1)
+		if(playerList.length < 1){
 			gameMode = false;
+			
+			if(ballGame.tempScore > ballGame.hiScore){
+				ballGame.hiScore = ballGame.tempScore;
+				document.getElementById("hiScoreScreen").innerHTML = ballGame.hiScore;
+			}
+			
+			ballGame.tempScore = 0;
+		}
 		
     };
 	
