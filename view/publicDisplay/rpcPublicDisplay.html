@@ -21,11 +21,27 @@
 		
 		<script type="text/javascript">	
             var myCreature = new Creature("Hans", 0);
-            myCreature.images.push("../images/fox_1.png");
-            myCreature.images.push("../images/fox_2.jpg");
-            myCreature.images.push("../images/fox_3.png");
-            myCreature.images.push("../images/fox_4.jpg");
-            myCreature.images.push("../images/fox_5.jpeg");
+            
+            myCreature.stateImages.push("../images/fox_1.png");
+            myCreature.stateImages.push("../images/fox_2.jpg");
+            myCreature.stateImages.push("../images/fox_3.png");
+            myCreature.stateImages.push("../images/fox_4.jpg");
+            myCreature.stateImages.push("../images/fox_5.jpeg");
+            
+            myCreature.playImages.push("../images/play_dropped.jpg");
+            myCreature.playImages.push("../images/play_fast.jpg");
+            myCreature.playImages.push("../images/play_lessSlow.jpg");
+            myCreature.playImages.push("../images/play_slow.jpg");
+            
+            myCreature.feedings.push("../images/fox_angry.gif");
+            myCreature.feedings.push("../images/fox_gotfood.gif");
+            myCreature.feedings.push("../images/fox_licking.gif");
+            
+            myCreature.gameAnimations.push("../images/fox-happytoplay.gif");
+            myCreature.gameAnimations.push("../images/fox-sniffing.gif");
+            myCreature.gameAnimations.push("../images/fox-notsure.gif,");
+            myCreature.gameAnimations.push("../images/fox-jump.gif");
+            myCreature.gameAnimations.push("../images/fox-ball.gif");            
             
             var myWorld = new World("The new world", 10, 1, myCreature, "world");
 

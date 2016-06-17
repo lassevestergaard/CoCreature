@@ -28,7 +28,7 @@ function World(name, trees, fertility, creature, drawDiv) {
         cell1.append(progress);
         
         //Hunger level
-        var pText1=$("<p>",{class:"text-left", text:"Hunger"});
+        var pText1=$("<p>",{class:"text-left", text:"Energy"});
         cell2.append(pText1);
         
         var progress1=$("<div>",{class:"progress"});

@@ -1,7 +1,12 @@
 function Creature(name, gender) {
     this.name = name;
     this.gender = gender;
-    this.images=[];
+    this.stateImages=[];
+    this.playImages=[];
+    this.feedings=[];
+    this.gameAnimations=[];
+    this.currentFoodGif=-1;
+    this.imgSrc="";
     
     //between 0 and 100
     this.happinessLevel = 50;
@@ -13,13 +18,16 @@ function Creature(name, gender) {
     
         if(name.toLowerCase()=="broccoli"){
             happi=-5;
-            starv=10
+            starv=10;
+            this.currentFoodGif=0;
         }else if(name.toLowerCase()=="cake"){
             happi=5;
-            starv=5
+            starv=5;
+            this.currentFoodGif=1;
         }else if(name.toLowerCase()=="fish"){
             happi=5;
-            starv=20
+            starv=20;
+            this.currentFoodGif=2;
         }
         
         this.starvationLevel += starv;
@@ -33,7 +41,6 @@ function Creature(name, gender) {
             this.happinessLevel=100;
         else if (this.happinessLevel < 0)
             this.happinessLevel=0;
-        
     }
     
     this.play = function(playLevel){
@@ -42,16 +49,22 @@ function Creature(name, gender) {
     }
     
     this.draw = function(){
-        console.log("!!!!!!!!!!!!!!");
-        console.log(this.happinessLevel);
-        console.log("!!!!!!!!!!!!!!");
-        console.log(this.starvationLevel);
-        console.log("!!!!!!!!!!!!!!");
-        console.log(Math.floor((this.happinessLevel+this.starvationLevel)/50));
-        console.log("!!!!!!!!!!!!!!");
-        console.log(this.images[Math.floor((this.happinessLevel+this.starvationLevel)/50)]);
-        console.log("!!!!!!!!!!!!!!");
+        console.log("HEJ" + this.imgSrc);
     
-        return $("<img>", {src: this.images[Math.floor((this.happinessLevel+this.starvationLevel)/50)], class: "center-block creature"});
+        if(this.imgSrc=="")
+            this.drawState("generalstate");
+        return $("<img>", {src: this.imgSrc, class: "center-block creature"});
+    }
+    
+    this.drawState = function(type, value=null){
+        if(type.toLowerCase()=="generalstate")
+            this.imgSrc=this.stateImages[Math.floor((this.happinessLevel+this.starvationLevel)/50)];
+        else if(type.toLowerCase()=="play")
+            this.imgSrc=this.playImages[Math.floor(Math.random()*this.playImages.length)];
+        else if(type.toLowerCase()=="playanimation")
+            this.imgSrc=this.gameAnimations[value];
+        else if(type.toLowerCase()=="feed"){
+            this.imgSrc=this.feedings[this.currentFoodGif];
+        }
     }
 }
