@@ -36,6 +36,9 @@ function World(name, trees, fertility, creature, drawDiv) {
         progress1.append(progressBar1);
         cell2.append(progress1);
         
+        var speechBubble=$("<div>",{class:"speechBubble", text:this.creature.message});
+        worldWindow.append(speechBubble);
+        
         //Adding creature
         worldWindow.append(this.creature.draw());
     }

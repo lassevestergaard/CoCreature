@@ -11,6 +11,7 @@ function Creature(name, gender) {
     //between 0 and 100
     this.happinessLevel = 10;
     this.starvationLevel=20;
+    this.message="Hi I am a fox...";
 
     this.feed = function(name){
         var happi=0;
@@ -20,6 +21,7 @@ function Creature(name, gender) {
             happi=-5;
             starv=5;
             this.currentFoodGif=this.starvationLevel == 100 ? 2 : 0;
+            this.message="I hate broccoli....";
         }else if(name.toLowerCase()=="cake"){
             happi=5;
             starv=15;
