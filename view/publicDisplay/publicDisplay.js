@@ -138,9 +138,9 @@ function TestScreen(){
                 console.log("myWorld.draw() - ");
                 myWorld.draw();
                 myCreature.drawState("generalstate");
-                setTimeout(function(){myWorld.draw();},20000);
+                setTimeout(function(){myWorld.draw();},10000);
 				
-			}, 10000);
+			}, 20000);
 		}
 	}
     
